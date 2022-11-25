@@ -1,5 +1,6 @@
+import java.util.Random;
 public class Taxi extends Vehicle{
-    int Number;
+    Random random = new Random();
     String Destination;
     int basicDistance = 1;
     int destinationDistance;
@@ -13,7 +14,20 @@ public class Taxi extends Vehicle{
 
     //생성자
     Taxi(int Number){
-        this.Number = Number;
+        boolean check = super.setNumber(Number);
+        //System.out.println("check = " + check);
+        if(check == true){
+            this.Number = Number;
+        } else {
+            while(check == false){
+                Number = Number + random.nextInt(10);
+                //System.out.println("Number = " + Number);
+                //System.out.println("========================");
+                check = super.setNumber(Number);
+            }
+            //while문 돌고 나온 최종 사용 가능한 넘버.
+            this.Number = Number;
+        }
     }
 
     //운행 시작 - 주유상태 체크하고 주유량이 10 이상이여야지 운행 가능

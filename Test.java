@@ -1,8 +1,19 @@
+import java.util.Arrays;
+
 public class Test {
     public static void main(String[] args) {
 
-        Bus bus1 = new Bus(2);  //여기서 숫자 저장.!
-        Taxi taxi1 = new Taxi(2);
+        Bus bus1 = new Bus(3);
+        //System.out.println("bus1.Number = " + bus1.Number);
+        //System.out.println("bus1.Number_List = " + bus1.Number_List);
+        
+        Bus bus2 = new Bus(3);
+        //System.out.println("bus2.Number = " + bus2.Number);
+        //System.out.println("bus2.Number_List = " + bus2.Number_List);
+        
+        Taxi taxi1 = new Taxi(3);
+        //System.out.println("taxi1.Number_List = " + taxi1.Number_List);
+        Taxi taxi2 = new Taxi(3);
 
 
         System.out.println("버스 기능 테스트 ================");

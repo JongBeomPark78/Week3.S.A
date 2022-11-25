@@ -1,14 +1,32 @@
+import java.net.StandardSocketOptions;
+import java.util.Random;
 public class Bus extends Vehicle{
+    Random random = new Random();
     int fee = 1000;
     int MaxPassenger = 30;
     int currentPassenger = 0;
     String State ="운행중";
+
     int Number;
+
 
 
     //버스 객체 생성.
     Bus(int Number){
-        this.Number = Number;
+        boolean check = super.setNumber(Number);
+        //System.out.println("check = " + check);
+        if(check == true){
+            this.Number = Number;
+        } else {
+            while(check == false){
+                Number = Number + random.nextInt(10);
+                //System.out.println("Number = " + Number);
+                //System.out.println("========================");
+                check = super.setNumber(Number);
+            }
+            //while문 돌고 나온 최종 사용 가능한 넘버.
+            this.Number = Number;
+        }
     }
 
     //버스 스피드 변경.
