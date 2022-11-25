@@ -1,34 +1,27 @@
-public class Bus{
+public class Bus extends Vehicle{
     int fee = 1000;
     int MaxPassenger = 30;
     int currentPassenger = 0;
     String State ="운행중";
     int Number;
-    int Gas = 100;
-    int Speed = 0;
-
-    static int count = 0;
 
 
     //버스 객체 생성.
     Bus(int Number){
         this.Number = Number;
     }
+
     //버스 스피드 변경.
-    void SpeedChange(int change){
+    @Override
+    void changeSpeed(int change){
         if(State.equals("운행중")){
-            Speed = Speed + change;
-            if(Speed < 0){
-                Speed = 0;
-                System.out.println("현재 스피드 : " + Speed);
-
-            }
-            System.out.println("현재 스피드 : " + Speed);
+            super.changeSpeed(change);
         }
-
     }
     //승객 태우기.
-    void plusPassenger(int pluspassenger){
+
+    void addpassenger(int pluspassenger){
+        super.addpassenger(pluspassenger, MaxPassenger);
         int Max = MaxPassenger;
         int Curr = currentPassenger;
         if(State.equals("운행중")){
@@ -51,7 +44,7 @@ public class Bus{
     }
     //가스 사용하기.
     void GasUse(int Use){
-        Gas = Gas - Use;
+        Gas = Gas + Use;
         if(Gas < 10){
             if(Gas < 0){
                 Gas = 0;
@@ -66,16 +59,17 @@ public class Bus{
             System.out.println("상태 = " + State);
             System.out.println("주유가 필요합니다.");
 
+        } else {
+            System.out.println("주유량 = " + Gas);
         }
 
-        System.out.println("주유량 = " + Gas);
 
     }
-    //가스 주유
+    //기름 주유
+    @Override
     void GasPlus(int Plus){
-        Gas = Gas + Plus;
         System.out.println("상테 = " + State);
-        System.out.println("주유량 = " + Gas);
+        super.GasPlus(Plus);
 
     }
     //상태 바꿈.

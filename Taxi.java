@@ -1,7 +1,5 @@
-public class Taxi{
+public class Taxi extends Vehicle{
     int Number;
-    int Gas = 100;
-    int Speed = 0;
     String Destination;
     int basicDistance = 1;
     int destinationDistance;
@@ -34,9 +32,7 @@ public class Taxi{
         if(Gas < 10){
             System.out.println("가스가 없어서 운행이 불가능합니다.");
         } else {
-            if(passenger > MaxPassenger){
-                System.out.println("최대 승객 수 초과");
-            }
+            super.addpassenger(passenger, MaxPassenger);
 
             this.Destination = Destination;
             this.destinationDistance = destinationDistance;
@@ -53,21 +49,23 @@ public class Taxi{
             System.out.println("상태 = " + State);
         }
     }
-    int GasUse(int Use){
+    void GasUse(int Use){
         Gas = Gas + Use;
         if(Gas < 10){
             if(Gas < 0){
                 Gas = 0;
                 State = "운행불가";
-                return Gas;
+
             }else {
                 State = "운행불가";
-                return Gas;
+
             }
+        } else {
+            System.out.println("주유량 = " + Gas);
         }
 
-        System.out.println("주유량 = " + Gas);
-        return Gas;
+
+
     }
     void result() {
         if(Gas < 10){
